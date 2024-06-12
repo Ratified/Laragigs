@@ -79,4 +79,9 @@ class ListingController extends Controller
         $listing->update($data);
         return redirect('/')->with('message', 'Listing Updated!');
     }
+
+    public function destroy(Listing $listing){
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing Deleted!');
+    }
 }

@@ -46,5 +46,18 @@
                         </div>
                     </div>
                 </x-card>
+
+                <div class="mt-6 flex justify-between text-sm">
+                    <a href="/listings/{{$listing->id}}/edit">
+                        <i class="fa-solid fa-pencil">Edit Gig</i> 
+                    </a>
+                
+                    <form action="{{ route('listings.destroy', ['listing' => $listing->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-500 text-red-500"> <i class="fa-solid fa-trash">Delete Listing</i></button>
+                    </form>
+                </div>
+                
             </div>
 @endsection

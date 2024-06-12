@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
-use App\Models\Listing;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +31,7 @@ Route::get('/', [ListingController::class, 'index']);
 
 
 //Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->name('listings.create');
 
 //Single Listing
 // Route::get('/listings/{id}', function ($id) {
@@ -56,5 +56,24 @@ Route::get('listings/{listing}/edit', [ListingController::class, 'edit']);
 //Update Listing
 Route::put('listings/{listing}', [ListingController::class, 'update'])->name('listings.update');
 
+//Delete Listing
+Route::delete('listings/{listing}', [ListingController::class, 'destroy'])->name('listings.destroy');
+
 //Route Model Binding
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+//Show Register/Create Form
+Route::get('/register', [UserController::class, 'create'])->name('register');
+
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+
+Route::get('/login', [UserController::class, 'login'])->name('login');
+
+//Log User Out
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+//Show Log In Form
+Route::get('/login', [UserController::class, 'login'])->name('login');
+
+//Log User In
+Route::post('/login', [UserController::class, 'loginUser'])->name('loginUser');

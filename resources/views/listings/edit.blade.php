@@ -55,7 +55,7 @@
             <label for="tags" class="inline-block text-lg mb-2">
                 Tags (Comma Separated)
             </label>
-            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"                placeholder="Example: Laravel, Backend, Postgres, etc" value="{{$listing->tags}}"/>
+            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags" placeholder="Example: Laravel, Backend, Postgres, etc" value="{{$listing->tags}}"/>
             @error('tags')
                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
@@ -64,6 +64,7 @@
         <div class="mb-6">
             <label for="logo" class="inline-block text-lg mb-2"> Company Logo </label>
             <input type="file" class="border border-gray-200 rounded p-2 w-full" name="logo" value="{{$listing->logo}}"/>
+            <img src="{{$listing->logo ? asset('storage/'.$listing->logo) : asset('images/no-image.png')}}" alt="Current Image Logo">
             @error('logo')
                 <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
             @enderror
